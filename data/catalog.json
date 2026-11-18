@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "number": 13,
+      "title": "IP-адреса",
+      "templates": [
+        {
+          "id": "13-01",
+          "title": "Подсчёт адресов по условию",
+          "path": "task-13/count-addresses"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Обработка текстовых файлов",
+      "templates": [
+        {
+          "id": "24-02",
+          "title": "Цепочка букв A",
+          "path": "task-24/a-run"
+        },
+        {
+          "id": "24-08",
+          "title": "Ровно K букв",
+          "path": "task-24/exact-k-a"
+        }
+      ]
+    }
+  ]
+}

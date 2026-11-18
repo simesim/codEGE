@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#191919">
+    <title>Тренировка — CodEGE</title>
+    <link rel="icon" type="image/png" href="assets/mascot/owl.png">
+    <link rel="apple-touch-icon" href="assets/mascot/owl.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="vendor/codemirror/codemirror.css">
+    <link rel="stylesheet" href="css/trainer.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/local-file.js"></script>
+    <script defer src="vendor/codemirror/codemirror.js"></script>
+    <script defer src="vendor/codemirror/python.js"></script>
+    <script defer src="vendor/codemirror/closebrackets.js"></script>
+    <script defer src="vendor/codemirror/matchbrackets.js"></script>
+    <script type="module" src="js/trainer.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <header class="header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html" aria-label="CodEGE — главная"><img src="assets/mascot/owl.png" alt="" width="38" height="38"><span>CodEGE<span class="logo-dot">.</span></span>
+            </a>
+            <nav aria-label="Основная навигация"><a href="index.html#catalog">Задания</a><a href="index.html#how">Как заниматься</a></nav>
+            <div class="countdown" title="Ориентировочная дата — 1 июня"><span>До ЕГЭ ≈</span> <strong id="days-counter">—</strong> <span>дн.</span></div>
+        </div>
+    </header>
+    <main class="container trainer-page" id="main">
+        <a href="index.html#catalog" id="back-link" class="text-link">← К заданиям</a>
+        <div id="trainer-status" class="load-state" role="status">Загружаем шаблон…</div>
+        <article id="trainer-content" hidden>
+            <div class="trainer-title-row">
+                <p id="task-label" class="task-label"></p><span id="level-label" class="level-label"></span></div>
+            <h1 id="template-title"></h1>
+            <p id="template-condition" class="template-condition"></p>
+            <section id="success-panel" class="success-panel" hidden aria-labelledby="success-title">
+                <img src="assets/mascot/owl.png" alt="" width="130" height="130">
+                <div>
+                    <p class="side-label">Тренировка завершена</p>
+                    <h2 id="success-title" tabindex="-1">Все тесты пройдены!</h2>
+                    <p id="success-count"></p>
+                    <p id="success-mascot-message" class="success-mascot-message"></p>
+                    <p id="save-notice" class="progress-notice" role="status" hidden></p>
+                    <div class="result-actions"><a id="repeat-link" class="button" href="#">Повторить тренировку ↗</a><a id="theory-link" class="result-link" href="#">Вернуться к теории</a><a id="catalog-link" class="result-link" href="index.html#catalog">Вернуться в каталог</a></div>
+                </div>
+            </section>
+            <div class="workspace" id="workspace">
+                <section class="editor-panel" aria-label="Редактор Python">
+                    <div class="editor-bar"><span class="file-tab"><span class="file-dot"></span> main.py</span>
+                        <div class="tools"><button id="next-gap" type="button" class="next-gap" title="Выбрать следующий пропуск">Пропуск →</button><button id="undo" type="button" title="Отменить (Ctrl+Z)" aria-label="Отменить" disabled>↶</button><button id="redo" type="button"
+                                title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить" disabled>↷</button></div>
+                    </div>
+                    <div id="editor"></div>
+                    <section id="mobile-editor" class="mobile-editor" aria-label="Панель ввода Python">
+                        <div class="mobile-actions" role="group" aria-label="Отступы и история"></div>
+                        <div class="mobile-symbols" role="group" aria-label="Символы Python"></div>
+                    </section>
+                    <div class="editor-foot"><span id="edit-mode"></span><span id="gap-count"></span><span id="cursor-status">Стр. 1, ст. 1</span></div>
+                </section>
+                <aside class="side-panel">
+                    <div class="owl-area" id="mascot" data-state="idle"><img src="assets/mascot/owl.png" alt="Сова CodEGE">
+                        <p data-mascot-message class="mascot-message" role="status"></p>
+                    </div>
+                    <div class="side-copy">
+                        <p class="side-label">Тренировка</p>
+                        <h2 id="side-title">Восстанови код</h2>
+                        <p id="editor-help"></p>
+                    </div>
+                    <section id="hint-panel" class="hint-panel" aria-labelledby="hint-title" hidden>
+                        <h2 id="hint-title">Подсказки</h2>
+                        <div class="hint-target-row"><label for="hint-target">К какому пропуску?</label><select id="hint-target"></select></div>
+                        <ol id="hint-list" class="hint-list" aria-live="polite"></ol>
+                        <button id="reveal-hint" type="button" class="hint-button">Получить подсказку</button>
+                        <p id="hint-note" class="hint-note" role="status"></p>
+                    </section>
+                </aside>
+                <section class="console" aria-labelledby="console-title">
+                    <div class="console-head">
+                        <h2 id="console-title">Консоль</h2><button type="button" id="check-code" class="button check-code" disabled>Проверить код <span aria-hidden="true">↗</span></button></div>
+                    <div class="console-body">
+                        <p id="python-status" class="python-status" role="status">Загружаем Python…</p><button type="button" id="retry-python" class="retry-button" hidden>Попробовать снова</button>
+                        <p id="console-output" role="status">Пока можешь писать код.</p>
+                        <div id="test-results" class="test-results"></div>
+                    </div>
+                </section>
+            </div>
+        </article>
+        <noscript>Для тренировки включи JavaScript.</noscript>
+    </main>
+    <footer class="footer">
+        <div class="container footer-inner"><span>CodEGE · ЕГЭ по информатике</span><a href="#main">Наверх ↑</a></div>
+    </footer>
+</body>
+
+</html>

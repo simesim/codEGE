@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#191919">
+    <meta name="description" content="CodEGE — тренажёр шаблонов Python для ЕГЭ по информатике.">
+    <title>CodEGE — тренажёр Python</title>
+    <link rel="icon" type="image/png" href="assets/mascot/owl.png">
+    <link rel="apple-touch-icon" href="assets/mascot/owl.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/local-file.js"></script>
+    <script type="module" src="js/catalog.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <header class="header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html" aria-label="CodEGE — главная">
+                <img src="assets/mascot/owl.png" alt="" width="38" height="38">
+                <span>CodEGE<span class="logo-dot">.</span></span>
+            </a>
+            <nav aria-label="Основная навигация">
+                <a href="#catalog">Задания</a>
+                <a href="#how">Как заниматься</a>
+            </nav>
+            <div class="countdown" title="Ориентировочная дата — 1 июня" aria-live="polite">
+                <span>До ЕГЭ ≈</span> <strong id="days-counter">—</strong> <span>дн.</span>
+            </div>
+        </div>
+    </header>
+    <main class="container" id="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <h1 id="hero-title">Пиши код.<br><span>Не зубри.</span></h1>
+                <p class="hero-description">Тренажёр Python для ЕГЭ по информатике. Разбирай алгоритмы, восстанавливай пропуски и учись писать код по памяти.</p>
+                <div class="hero-actions">
+                    <a class="button" href="#catalog">К заданиям <span aria-hidden="true">↘</span></a>
+                    <a class="text-link" href="#how">Как это работает</a>
+                </div>
+            </div>
+            <div class="hero-art">
+                <svg class="art-decoration" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M50 0 55 37 82 12 65 44 100 50 65 56 82 88 55 64 50 100 44 64 12 88 35 56 0 50 35 44 12 12 44 37Z" fill="currentColor"/>
+        </svg>
+                <picture class="owl-picture">
+                    <source media="(prefers-reduced-motion: reduce)" srcset="assets/mascot/owl.png">
+                    <img class="hero-owl" src="assets/mascot/owl-spin.gif" alt="Вращающаяся сова CodEGE" width="362" height="380">
+                </picture>
+            </div>
+        </section>
+        <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+            <div class="section-heading">
+                <h2 id="catalog-title">Выбери задание<span>.</span></h2>
+                <p id="catalog-count" aria-live="polite"></p>
+            </div>
+            <div id="catalog-status" class="load-state" role="status" aria-live="polite">Загружаем задания…</div>
+            <div class="task-grid" id="task-grid" aria-busy="true"></div>
+            <div class="progress-footer">
+                <p>Прогресс сохраняется в этом браузере.</p><button type="button" id="reset-all-progress" class="reset-progress" disabled>Сбросить весь прогресс</button></div>
+            <p id="catalog-progress-notice" class="progress-notice" role="status" hidden></p>
+            <noscript><p>Для просмотра заданий включи JavaScript в браузере.</p></noscript>
+        </section>
+        <section class="how" id="how" aria-labelledby="how-title">
+            <div class="section-heading">
+                <h2 id="how-title">Как заниматься<span>.</span></h2>
+            </div>
+            <div class="steps">
+                <article class="step"><span class="step-number">01</span>
+                    <h3>Разбери шаблон</h3>
+                    <p>Изучи алгоритм и объяснение каждой строки.</p>
+                </article>
+                <article class="step"><span class="step-number">02</span>
+                    <h3>Восстанови код</h3>
+                    <p>Заполни пропущенные фрагменты по памяти.</p>
+                </article>
+                <article class="step"><span class="step-number">03</span>
+                    <h3>Проверь себя</h3>
+                    <p>Проверь решение на тестовых данных.</p>
+                </article>
+            </div>
+            <div class="levels-panel">
+                <div>
+                    <h3>Пять уровней сложности</h3>
+                    <p>От небольших пропусков до кода с нуля.</p>
+                </div>
+                <div class="level-strip" aria-label="Пять уровней сложности"><span>15%</span><span>30%</span><span>50%</span><span>75%</span><span>100%</span></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container footer-inner"><span>CodEGE · ЕГЭ по информатике</span><a href="#main">Наверх ↑</a></div>
+    </footer>
+</body>
+
+</html>

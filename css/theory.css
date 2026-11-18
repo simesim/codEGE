@@ -1,0 +1,455 @@
+/* Страница шаблона: продолжение редакционного оформления главной. */
+
+.template-page {
+    padding-block: 38px 14px;
+    min-height: 58vh;
+}
+
+.task-label {
+    font: 13px/1.5 var(--mono);
+    color: var(--lime);
+    margin: 32px 0 12px;
+}
+
+.template-page h1 {
+    font: 900 clamp(33px, 5.5vw, 68px)/1.02 var(--display);
+    letter-spacing: -.055em;
+    overflow-wrap: anywhere;
+    max-width: 950px;
+}
+
+.template-condition {
+    margin-top: 20px;
+    color: var(--muted);
+    max-width: 72ch;
+    font-size: 18px;
+}
+
+.code-section {
+    margin-top: 36px;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+}
+
+.code-section h2 {
+    font-size: 23px;
+    letter-spacing: -.035em;
+}
+
+.code-section pre {
+    margin: 16px 0 0;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--lime);
+    padding: 22px;
+    background: #202020;
+    overflow: auto;
+    tab-size: 4;
+    font: 15px/1.75 var(--mono);
+}
+
+.code-section code {
+    font: inherit;
+}
+
+@media (max-width: 760px) {
+    .template-page {
+        padding-block: 24px 8px;
+    }
+    .template-condition {
+        font-size: 16px;
+    }
+    .code-section pre {
+        font-size: 13px;
+        padding: 14px;
+    }
+}
+
+
+/* Интерактивный разбор: общий графит, крупные акценты, моноширинный код. */
+
+.section-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.code-language {
+    color: var(--muted);
+    font: 12px/1.4 var(--mono);
+}
+
+.section-help {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.theory-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+.code-shell {
+    min-width: 0;
+    border: 1px solid var(--line);
+    background: #202020;
+}
+
+.code-scroll {
+    overflow: auto;
+    padding-block: 12px;
+    max-height: 560px;
+    overscroll-behavior: contain;
+}
+
+.code-line {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 12px;
+    min-width: 100%;
+    width: max-content;
+    text-align: left;
+    color: var(--text);
+    background: transparent;
+    padding: 5px 18px 5px 10px;
+    border: 0;
+    border-left: 3px solid transparent;
+    font: 14px/1.6 var(--mono);
+}
+
+button.code-line {
+    cursor: pointer;
+}
+
+button.code-line:hover {
+    background: #30332b;
+}
+
+button.code-line[aria-pressed="true"] {
+    background: #303828;
+    border-left-color: var(--lime);
+}
+
+button.code-line:focus-visible {
+    outline-offset: -3px;
+}
+
+.line-number {
+    text-align: right;
+    color: #96968e;
+    user-select: none;
+}
+
+.code-line[aria-pressed="true"] .line-number {
+    color: var(--lime);
+    font-weight: 700;
+}
+
+.line-code {
+    white-space: pre;
+    tab-size: 4;
+    font: inherit;
+}
+
+.py-keyword {
+    color: #bba5f5;
+}
+
+.py-string {
+    color: #d8d897;
+}
+
+.py-number {
+    color: #f1b788;
+}
+
+.py-builtin {
+    color: #a5cce9;
+}
+
+.py-operator {
+    color: #c4c2b9;
+}
+
+.py-comment {
+    color: #a2a89a;
+    font-style: italic;
+}
+
+.explanation {
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--lime);
+    background: var(--panel);
+}
+
+.explanation-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--line);
+    font: 700 12px/1.4 var(--mono);
+    color: var(--lime);
+}
+
+#line-position {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.explanation-body {
+    padding: 18px;
+    min-height: 170px;
+}
+
+.code-section .selected-code {
+    border: none;
+    border-left: 0;
+    margin: 0 0 18px;
+    padding: 10px 12px;
+    background: #191919;
+    color: var(--text);
+    font: 13px/1.6 var(--mono);
+    white-space: pre;
+    overflow-x: auto;
+}
+
+#line-explanation {
+    color: var(--text);
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.line-nav {
+    display: flex;
+    border-top: 1px solid var(--line);
+}
+
+.line-nav button {
+    flex: 1;
+    padding: 12px 8px;
+    min-height: 44px;
+    font: 700 13px/1.4 var(--sans);
+    background: transparent;
+    color: var(--text);
+    border: 0;
+    cursor: pointer;
+}
+
+.line-nav button+button {
+    border-left: 1px solid var(--line);
+}
+
+.line-nav button:not(:disabled):hover {
+    background: var(--lime);
+    color: var(--ink);
+}
+
+.line-nav button:disabled {
+    color: #888;
+    cursor: default;
+}
+
+.difficulty-section {
+    margin-top: 38px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+}
+
+.difficulty-section h2 {
+    font-size: 23px;
+    letter-spacing: -.035em;
+}
+
+.difficulty-fieldset {
+    border: 0;
+    padding: 0;
+    margin: 18px 0 0;
+    min-width: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.difficulty-option {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    min-width: 0;
+    min-height: 92px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 14px;
+    cursor: pointer;
+}
+
+.difficulty-option input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.difficulty-value {
+    font: 900 clamp(23px, 3.3vw, 40px)/1 var(--display);
+    letter-spacing: -.06em;
+}
+
+.difficulty-option small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.difficulty-option:has(input:checked) {
+    background: var(--lime);
+    border-color: var(--lime);
+    color: var(--ink);
+}
+
+.difficulty-option:has(input:checked) small {
+    color: var(--ink);
+}
+
+.difficulty-option:has(input:focus-visible) {
+    outline: 2px solid var(--lime);
+    outline-offset: 4px;
+}
+
+.difficulty-option:hover:not(:has(input:checked)) {
+    border-color: var(--lime);
+}
+
+.difficulty-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+#difficulty-description {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 60ch;
+}
+
+.training-action {
+    flex: none;
+    text-align: right;
+}
+
+.start-training:disabled {
+    background: #2d2d2d;
+    border-color: var(--line);
+    color: #aaa;
+    cursor: not-allowed;
+    font-family: var(--sans);
+    font-size: 14px;
+}
+
+.training-action p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+    .theory-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .code-scroll {
+        max-height: 42vh;
+    }
+    .code-line {
+        font-size: 13px;
+        grid-template-columns: 28px 1fr;
+        gap: 10px;
+        padding-block: 7px;
+    }
+    .explanation-body {
+        min-height: 0;
+    }
+    .difficulty-option {
+        min-height: 72px;
+        padding: 10px 6px;
+        align-items: center;
+    }
+    .difficulty-grid {
+        gap: 6px;
+    }
+    .difficulty-value {
+        font-size: clamp(18px, 5vw, 30px);
+    }
+    .difficulty-option small {
+        font-size: 10px;
+    }
+    .difficulty-bottom {
+        flex-direction: column;
+    }
+    .training-action {
+        width: 100%;
+        text-align: left;
+    }
+    .start-training {
+        width: 100%;
+    }
+}
+
+.theory-progress {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.recommendation {
+    color: var(--lime);
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.difficulty-option.is-recommended:not(:has(input:checked)) {
+    border-color: var(--lime);
+}
+
+.difficulty-option .difficulty-passed {
+    color: var(--lime);
+}
+
+.difficulty-option:has(input:checked) .difficulty-passed {
+    color: var(--ink);
+}
+
+@media (max-width: 760px) {
+    .difficulty-option .difficulty-passed {
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+}

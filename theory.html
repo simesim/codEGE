@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#191919">
+    <title>Шаблон — CodEGE</title>
+    <link rel="icon" type="image/png" href="assets/mascot/owl.png">
+    <link rel="apple-touch-icon" href="assets/mascot/owl.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/theory.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/local-file.js"></script>
+    <script type="module" src="js/theory.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">К содержанию</a>
+    <header class="header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html" aria-label="CodEGE — главная"><img src="assets/mascot/owl.png" alt="" width="38" height="38"><span>CodEGE<span class="logo-dot">.</span></span>
+            </a>
+            <nav aria-label="Основная навигация"><a href="index.html#catalog">Задания</a><a href="index.html#how">Как заниматься</a></nav>
+            <div class="countdown" title="Ориентировочная дата — 1 июня" aria-live="polite"><span>До ЕГЭ ≈</span> <strong id="days-counter">—</strong> <span>дн.</span></div>
+        </div>
+    </header>
+    <main class="container template-page" id="main">
+        <a href="index.html#catalog" id="back-link" class="text-link">← К заданиям</a>
+        <div id="theory-status" class="load-state" role="status" aria-live="polite">Загружаем шаблон…</div>
+        <article id="theory-content" aria-busy="true" hidden>
+            <p id="task-label" class="task-label"></p>
+            <h1 id="template-title"></h1>
+            <p id="template-condition" class="template-condition"></p>
+            <section class="code-section" aria-labelledby="code-title">
+                <div class="section-top">
+                    <h2 id="code-title">Шаблон кода</h2><span class="code-language">Python</span></div>
+                <p class="section-help" id="code-help">Нажми на строку, чтобы разобрать её.</p>
+                <div class="theory-grid">
+                    <div class="code-shell" aria-label="Код Python" aria-describedby="code-help">
+                        <div class="code-scroll" id="template-code" role="group" aria-label="Строки программы"></div>
+                    </div>
+                    <aside class="explanation" aria-labelledby="explanation-title">
+                        <div class="explanation-head"><span id="explanation-title">Разбор строки</span><span id="line-position"></span></div>
+                        <div class="explanation-body" aria-live="polite" aria-atomic="true">
+                            <pre class="selected-code"><code id="selected-code"></code></pre>
+                            <p id="line-explanation"></p>
+                        </div>
+                        <div class="line-nav"><button type="button" id="prev-line" aria-label="Предыдущая строка">← Назад</button><button type="button" id="next-line" aria-label="Следующая строка">Далее →</button></div>
+                    </aside>
+                </div>
+            </section>
+            <section class="difficulty-section" aria-labelledby="difficulty-title">
+                <h2 id="difficulty-title">Выбери сложность</h2>
+                <div class="theory-progress">
+                    <div id="template-progress" class="template-progress"></div><button type="button" id="reset-template-progress" class="reset-progress" disabled>Сбросить прогресс шаблона</button></div>
+                <p id="difficulty-recommendation" class="recommendation" aria-live="polite"></p>
+                <p id="theory-progress-notice" class="progress-notice" role="status" hidden></p>
+                <fieldset class="difficulty-fieldset">
+                    <legend class="visually-hidden">Процент кода, который нужно восстановить</legend>
+                    <div class="difficulty-grid" id="difficulty-grid"></div>
+                </fieldset>
+                <div class="difficulty-bottom">
+                    <p id="difficulty-description" aria-live="polite"></p>
+                    <div class="training-action"><button id="start-training" class="button start-training" type="button">Начать тренировку <span aria-hidden="true">↗</span></button></div>
+                </div>
+            </section>
+        </article>
+        <noscript><p>Для просмотра шаблона включи JavaScript в браузере.</p></noscript>
+    </main>
+    <footer class="footer">
+        <div class="container footer-inner"><span>CodEGE · ЕГЭ по информатике</span><a href="#main">Наверх ↑</a></div>
+    </footer>
+</body>
+
+</html>
