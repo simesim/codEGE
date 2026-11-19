@@ -88,7 +88,7 @@ checkButton.onclick = async() => {
     checkButton.disabled = true;
     retryPython.hidden = true;
     hintPanel.setBusy(true);
-    mobilePanel ? .setBusy(true);
+    if (mobilePanel) mobilePanel.setBusy(true);
     mascot.set('checking');
     editor.setReadOnly(true);
     editor.setErrorLine(null);
@@ -103,7 +103,7 @@ checkButton.onclick = async() => {
             onResult(result, count, total) {
                 renderTest(resultsNode, result);
                 consoleOutput.textContent = `Проверено: ${count} из ${total}`;
-                if (!firstError && result.error ? .line) firstError = result.error.line;
+                if (!firstError && result.error && result.error.line) firstError = result.error.line;
             }
         });
         consoleOutput.textContent = `Пройдено тестов: ${summary.passed} из ${summary.total}${summary.success ? '' : '. Исправь код и повтори проверку.'}`;
@@ -121,7 +121,7 @@ checkButton.onclick = async() => {
         if (!completed) {
             editor.setReadOnly(false);
             hintPanel.setBusy(false);
-            mobilePanel ? .setBusy(false);
+            if (mobilePanel) mobilePanel.setBusy(false);
             $('#undo').disabled = !editor.historySize().undo;
             $('#redo').disabled = !editor.historySize().redo;
             $('#next-gap').disabled = false;
@@ -202,16 +202,16 @@ async function init() {
             locked,
             onChange: () => {
                 $('#editor-help').textContent = normalHelp;
-                editor ? .setErrorLine(null);
+                if (editor) editor.setErrorLine(null);
                 syncWarning();
             },
             onBlocked: () => { $('#editor-help').textContent = 'Этот фрагмент защищён. Редактируй только выделенные пропуски.'; },
             onCursor: pos => { $('#cursor-status').textContent = `Стр. ${pos.line + 1}, ст. ${pos.ch + 1}`; },
-            onGap: gapId => hintPanel ? .select(gapId),
+            onGap: gapId => { if (hintPanel) hintPanel.select(gapId); },
             onHistory: history => {
                 $('#undo').disabled = !history.undo;
                 $('#redo').disabled = !history.redo;
-                mobilePanel ? .update();
+                if (mobilePanel) mobilePanel.update();
             }
         });
         hintPanel = mountHints($('#hint-panel'), hintSession, { full: level === 100, onSelect: gapId => editor.selectGap(gapId), onReveal: () => mascot.set('hint') });
