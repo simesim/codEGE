@@ -12,7 +12,7 @@
     --violet: #9c7bfa;
     --ink: #191919;
     --sans: Arial, Helvetica, sans-serif;
-    --mono: Consolas, 'Liberation Mono', monospace;
+    --mono: inter, Menlo, Monaco, Consolas, monospace;
     --display: 'Arial Black', Arial, Helvetica, sans-serif;
     --radius: 4px;
 }
