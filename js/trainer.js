@@ -62,8 +62,10 @@ function finishSuccess(summary) {
     $('#repeat-link').href = `trainer.html?${query}`;
     $('#theory-link').href = `theory.html?${new URLSearchParams({id})}`;
     $('#catalog-link').href = `index.html?task=${material.task.number}#catalog`;
-    $('#repeat-link').onclick = event => { event.preventDefault();
-        location.reload(); };
+    $('#repeat-link').onclick = event => {
+        event.preventDefault();
+        location.reload();
+    };
     $('#success-panel').hidden = false;
     $('.editor-panel').hidden = true;
     $('.side-panel').hidden = true;
@@ -148,8 +150,10 @@ function showStatus(message, retry = false) {
 function changed() { return !completed && editor && editor.getCode() !== initialCode; }
 
 function preventExit(event) {
-    if (changed() && !allowExit) { event.preventDefault();
-        event.returnValue = ''; }
+    if (changed() && !allowExit) {
+        event.preventDefault();
+        event.returnValue = '';
+    }
 }
 
 function syncWarning() {
@@ -163,8 +167,10 @@ document.addEventListener('click', event => {
     if (!confirm('Выйти из тренировки? Написанный код не будет сохранён.')) { event.preventDefault(); return; }
     allowExit = true;
 });
-window.addEventListener('pageshow', event => { if (event.persisted) location.reload();
-    else allowExit = false; });
+window.addEventListener('pageshow', event => {
+    if (event.persisted) location.reload();
+    else allowExit = false;
+});
 
 async function init() {
     content.hidden = true;
@@ -194,15 +200,19 @@ async function init() {
         editor = createPythonEditor($('#editor'), {
             ...seed,
             locked,
-            onChange: () => { $('#editor-help').textContent = normalHelp;
+            onChange: () => {
+                $('#editor-help').textContent = normalHelp;
                 editor ? .setErrorLine(null);
-                syncWarning(); },
+                syncWarning();
+            },
             onBlocked: () => { $('#editor-help').textContent = 'Этот фрагмент защищён. Редактируй только выделенные пропуски.'; },
             onCursor: pos => { $('#cursor-status').textContent = `Стр. ${pos.line + 1}, ст. ${pos.ch + 1}`; },
             onGap: gapId => hintPanel ? .select(gapId),
-            onHistory: history => { $('#undo').disabled = !history.undo;
+            onHistory: history => {
+                $('#undo').disabled = !history.undo;
                 $('#redo').disabled = !history.redo;
-                mobilePanel ? .update(); }
+                mobilePanel ? .update();
+            }
         });
         hintPanel = mountHints($('#hint-panel'), hintSession, { full: level === 100, onSelect: gapId => editor.selectGap(gapId), onReveal: () => mascot.set('hint') });
         mobilePanel = mountMobileEditor($('#mobile-editor'), editor);
@@ -213,8 +223,10 @@ async function init() {
         status.hidden = true;
         editor.refresh();
         preparePython();
-    } catch (err) { console.error(err);
+    } catch (err) {
+        console.error(err);
         content.hidden = true;
-        showStatus('Не удалось открыть тренировку. Попробуй снова.', true); }
+        showStatus('Не удалось открыть тренировку. Попробуй снова.', true);
+    }
 }
 init();
