@@ -82,6 +82,7 @@ function finishSuccess(summary) {
     $('#success-title').focus();
     $('#success-panel').scrollIntoView({ block: 'start' });
 }
+///asass
 checkButton.onclick = async() => {
     if (checking || completed || !client.ready || !editor || !tests) return;
     checking = true;
